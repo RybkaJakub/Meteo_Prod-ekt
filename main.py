@@ -38,6 +38,16 @@ class TemperatureAnalytics:
         annual_average_temperatures = trend_data.groupby('rok')['T-AVG'].mean()
         return annual_average_temperatures
 
+    def plot_daily_temperature_trends(self, day, month, year):
+        filtered_data = self.data[(self.data['den'] == day) & (self.data['měsíc'] == month) & (self.data['rok'] == year)]
+        daily_temps = filtered_data['T-AVG']
+        plt.figure(figsize=(10, 6))
+        plt.plot(daily_temps.index, daily_temps.values, marker='o', linestyle='-', color='b')
+        plt.title(f'Denní teplotní trendy pro {day}.{month}.{year}')
+        plt.xlabel('Čas')
+        plt.ylabel('Průměrná teplota (C)')
+        plt.grid(True)
+        plt.show()
 
     def plot_anual_temperature_averages(self, start_year, end_year):
         filtered_data = self.data[(self.data['rok'] >= start_year) & (self.data['rok'] <= end_year)]
@@ -50,7 +60,16 @@ class TemperatureAnalytics:
         plt.grid(True)
         plt.show()
 
-
+    def plot_day(self, day,month, year):
+        filtered_data = self.data[(self.data['den'] == day)],self.data[(self.data['měsíc'] == month)], self.data[(self.data['rok'] == year)]
+        annual_avg_temps = filtered_data.groupby('den')['T-AVG'].mean()
+        plt.figure(figsize=(10, 6))
+        plt.plot(annual_avg_temps.index, annual_avg_temps.values, marker='o', linestyle='-', color='b')
+        plt.title(f'Průměrné teploty v den {day}{month}{year}')
+        plt.xlabel('den')
+        plt.ylabel('Průměrná teplota (C)')
+        plt.grid(True)
+        plt.show()
 
 
 def test():
@@ -104,30 +123,32 @@ def main():
         print(f"Mesicni prumer pro rok {rok} jsou:")
         print(f"{monthly_averages}")
     elif vybrano =="4":
-        print("4")
+        zacatek = input("Zadej Zacatecni Rok: ")
+        konec = input("Zadej Koncovy Rok: ")
+        trends = temperature_analytics.analyze_temperature_trends(int(zacatek),int(konec))
+        print(trends)
     elif vybrano == "5":
         print("5")
     elif vybrano == "6":
-        print("6")
+        start_year = input("Startovní rok:")
+        end_year = input("Koncový rok rok:")
+        temperature_analytics.plot_anual_temperature_averages(int(start_year),int(end_year))
     elif vybrano == "7":
-        print("7")
+        print("7");
     elif vybrano == "8":
-        print("8")
+        day = input("Zadej den:")
+        month = input("Zadej měsíc:")
+        year = input("Zadej rok:")
+        temperature_analytics.plot_daily_temperature_trends(int(day), int(month), int(year))
     elif vybrano == "9":
-        print("9")
+        den = input("den:")
+        mesic = input("měsíc:")
+        rok = input("rok:")
+        temperature_analytics.plot_day(den, mesic,rok)
     elif vybrano == "0":
         print("0")
     else:
         print("ERROR")
-
-
-
-    #max_temp, date_of_max_temp = temperature_analytics.get_max_temperature(2022)
-    #min_temp, date_of_min_temp = temperature_analytics.get_min_temperature(2022)
-    #temperature_analytics.plot_anual_temperature_averages(2005, 2010)
-
-
-
 
 
 if __name__ == '__main__':
