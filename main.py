@@ -73,7 +73,19 @@ def test():
     """
 # Příklad použití
 
-
+def vyber():
+    print("1 - Zobrazit průměrnou teplotu pro zadaný rok")
+    print("2 - Zobrazit minimální a maximální teplotu pro zadaný rok")
+    print("3 - Zobrazit měsíční průměry pro zadaný rok")
+    print("4 - Analyzovat teplotní trendy")
+    print("5 - Analyzovat sezónní změny")
+    print("6 - Detekovat teplotní anomálie")
+    print("7 - Vykreslit průměrné roční teploty")
+    print("8 - Vykreslit denní teplotní trendy")
+    print("9 - Vykreslit minimální a maximální teploty pro konkrétní den")
+    print("0 - Konec")
+    vybrano = input("Zvolte akci:")
+    return vybrano
 
 def main():
     temperature_analytics = TemperatureAnalytics(temperature_data)
@@ -116,19 +128,7 @@ def main():
 
 
 
-def vyber():
-    print("1 - Zobrazit průměrnou teplotu pro zadaný rok")
-    print("2 - Zobrazit minimální a maximální teplotu pro zadaný rok")
-    print("3 - Zobrazit měsíční průměry pro zadaný rok")
-    print("4 - Analyzovat teplotní trendy")
-    print("5 - Analyzovat sezónní změny")
-    print("6 - Detekovat teplotní anomálie")
-    print("7 - Vykreslit průměrné roční teploty")
-    print("8 - Vykreslit denní teplotní trendy")
-    print("9 - Vykreslit minimální a maximální teploty pro konkrétní den")
-    print("0 - Konec")
-    vybrano = input("Zvolte akci:")
-    return vybrano
+
 
 if __name__ == '__main__':
     main()
