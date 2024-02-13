@@ -117,7 +117,6 @@ def main():
 
 
 def vyber():
-        
     print("1 - Zobrazit průměrnou teplotu pro zadaný rok")
     print("2 - Zobrazit minimální a maximální teplotu pro zadaný rok")
     print("3 - Zobrazit měsíční průměry pro zadaný rok")
